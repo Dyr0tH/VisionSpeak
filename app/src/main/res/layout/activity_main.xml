@@ -16,7 +16,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Image Digger"
+        app:title="VisionSpeak"
         app:titleTextColor="@android:color/white" />
 
     <!-- ScrollView for the rest of the content -->
