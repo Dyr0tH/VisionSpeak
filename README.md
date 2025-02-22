@@ -25,7 +25,7 @@ VisionSpeak is an AI-powered mobile application that allows users to capture or 
 ## 🚀 Installation & Setup
 ### **1. Clone the Repository**
 ```sh
-git clone https://github.com/yourusername/VisionSpeak.git
+git clone https://github.com/Dyr0tH/VisionSpeak.git
 cd VisionSpeak
 ```
 
