@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Image recognition</string>
+
+    <string-array name="language_options">
+        <item>English</item>
+        <item>Hindi</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Italian</item>
+        <item>Tamil</item>
+    </string-array>
+</resources>

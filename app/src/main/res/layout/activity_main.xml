@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Toolbar remains fixed on top -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Image Digger"
+        app:titleTextColor="@android:color/white" />
+
+    <!-- ScrollView for the rest of the content -->
+    <android.widget.ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:spacing="16dp">
+
+            <!-- URL Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/urlInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/serverURL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Backend server URL"
+                    android:imeOptions="actionDone"
+                    android:inputType="textUri"
+                    android:importantForAutofill="no" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Image Preview -->
+            <ImageView
+                android:id="@+id/selectedImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="center"
+                android:contentDescription="Your Selected Image"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <!-- Image Selection Buttons -->
+            <LinearLayout
+                android:id="@+id/imageSelectionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <!-- Select Image Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/uploadButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="Select Image"
+                    app:cornerRadius="8dp"
+                    app:icon="@android:drawable/ic_input_add"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:rippleColor="?attr/colorControlHighlight" />
+
+                <!-- Open Camera Button -->
+                <Button
+                    android:id="@+id/openCameraButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Click Image"
+                    app:cornerRadius="8dp"
+                    app:icon="@android:drawable/ic_menu_camera"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:rippleColor="?attr/colorControlHighlight"
+                    android:onClick="openCamera" />
+            </LinearLayout>
+
+            <!-- Analyze and Language Selector -->
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/uploadButton">
+
+                <!-- Analyze Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/analyzeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Analyze"
+                    app:cornerRadius="8dp"
+                    app:rippleColor="?attr/colorControlHighlight"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp" />
+
+                <!-- Language Spinner -->
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:entries="@array/language_options"
+                    android:minHeight="48dp" />
+            </LinearLayout>
+
+            <!-- Description Container -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/descriptionContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/descriptionTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description of the image"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/descriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Waiting for analysis..."
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Audio Player -->
+            <LinearLayout
+                android:id="@+id/audioPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <ImageButton
+                    android:id="@+id/playPauseButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Play/Pause"
+                    android:src="@android:drawable/ic_media_play" />
+
+                <SeekBar
+                    android:id="@+id/audioSeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100" />
+            </LinearLayout>
+
+            <!-- File Table -->
+            <TableLayout
+                android:id="@+id/fileTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1" />
+        </LinearLayout>
+    </android.widget.ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
