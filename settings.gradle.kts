@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Image recognition"
+rootProject.name = "VisionSpeak"
 include(":app")
