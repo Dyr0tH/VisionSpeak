@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Image recognition</string>
+    <string name="app_name">VisionSpeak</string>
 
     <string-array name="language_options">
         <item>English</item>
